@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 # ADD YOUR OWN PLEASE
-# os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 
 import json
 from typing import Sequence, List
