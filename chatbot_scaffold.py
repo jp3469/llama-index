@@ -102,12 +102,39 @@ agent = OpenAIAgent.from_tools(
 )
 
 
-while True:
-    user_input = input("You: ")
-    if user_input == "exit":
-        # import json
-        # with open('chat_store.json', 'w') as f:
-        #     json.dump(chat_store.json(), f)
-        break
-    response = agent.chat(user_input)
-    print(f"Bot: {response}")
+# while True:
+#     user_input = input("You: ")
+#     if user_input == "exit":
+#         # import json
+#         # with open('chat_store.json', 'w') as f:
+#         #     json.dump(chat_store.json(), f)
+#         break
+#     response = agent.chat(user_input)
+#     print(f"Bot: {response}")
+
+
+from flask import request
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/query", methods=["GET"])
+def query_index():
+    # global index
+    query_text = request.args.get("text", None)
+    if query_text is None:
+        return (
+            "No text found, please include a ?text=blah parameter in the URL",
+            400,
+        )
+    # query_engine = index.as_query_engine()
+    # response = query_engine.query(query_text)
+    response = agent.chat(query_text)
+    return str(response), 200
+
+@app.route("/")
+def home():
+    return "Hello World!"
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5601)
