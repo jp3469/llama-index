@@ -21,8 +21,8 @@ def query_agent():
     if query_text is None:
         return "No text found, please include a ?text=blah parameter in the URL", 400
     
-    response = manager.query_agent(query_text)
-    return make_response(jsonify(response)), 200
+    response = manager.query_agent(query_text)._getvalue()
+    return str(response), 200
 
 @app.route("/")
 def home():

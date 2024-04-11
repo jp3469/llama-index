@@ -1,26 +1,9 @@
 import os
 import pickle
 
-# NOTE: for local testing only, do NOT deploy with your key hardcoded
-os.environ['OPENAI_API_KEY'] = "your key here"
-
 from multiprocessing import Lock
 from multiprocessing.managers import BaseManager
-from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex, Document, ServiceContext, StorageContext, load_index_from_storage
 
-from llama_index.core import (
-    SimpleDirectoryReader,
-    VectorStoreIndex,
-    StorageContext,
-)
-from llama_index.core import load_index_from_storage
-from llama_index.readers.file import UnstructuredReader
-from pathlib import Path
-from llama_index.core import VectorStoreIndex, StorageContext
-from llama_index.core import Settings
-from llama_index.core import load_index_from_storage
-from llama_index.core.tools import QueryEngineTool, ToolMetadata
-from llama_index.llms.openai import OpenAI
 from llama_index.core.query_engine import SubQuestionQueryEngine
 from llama_index.agent.openai import OpenAIAgent
 from typing import Sequence, List
@@ -88,6 +71,11 @@ def distance_to_restaurant(
 def initialize_agent():
     """Create a new global index, or load one from the pre-set path."""
     global agent
+    load_dotenv()
+    # NOTE: for local testing only, do NOT deploy with your key hardcoded
+    GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
+    yelp_api_key = os.environ.get("YELP_API_KEY")
+    os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
     restaurant_search_tool = FunctionTool.from_defaults(fn=restaurant_search)
     restaurant_details_tool = FunctionTool.from_defaults(fn=restaurant_details_search)
     distance_to_restaurant_tool = FunctionTool.from_defaults(fn=distance_to_restaurant)
@@ -121,7 +109,7 @@ def query_agent(query_text):
 if __name__ == "__main__":
     # init the global index
     print("initializing index...")
-    initialize_index()
+    initialize_agent()
 
     # setup server
     # NOTE: you might want to handle the password in a less hardcoded way
