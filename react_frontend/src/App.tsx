@@ -8,7 +8,6 @@ function App() {
     <div className='app'>
       <Header />
       <div className='content'>
-        <DocumentTools />
         <IndexQuery />
       </div>
     </div>

@@ -22,7 +22,11 @@ def query_agent():
         return "No text found, please include a ?text=blah parameter in the URL", 400
     
     response = manager.query_agent(query_text)._getvalue()
-    return str(response), 200
+    response_json = {
+        "text": str(response),
+    }
+
+    return make_response(jsonify(response_json)), 200
 
 @app.route("/")
 def home():

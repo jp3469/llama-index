@@ -11,6 +11,12 @@ export type QueryResponse = {
   sources: ResponseSources[];
 };
 
+/*
+Got it! Could you provide more details on what you'd like to test within the app?
+
+-> {text: 'Got it! Could you provide more details on what you'd like to test within the app?'}
+*/
+
 const queryIndex = async (query: string): Promise<QueryResponse> => {
   const queryURL = new URL('http://localhost:5601/query?');
   queryURL.searchParams.append('text', query);
