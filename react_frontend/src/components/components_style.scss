@@ -188,7 +188,7 @@
 .query {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
   gap: 15px;
 
   &__input {
@@ -217,7 +217,7 @@
     border-radius: 5px;
     font-size: 12px;
     padding: 5px;
-    height: 20vh;
+    height: 35vh;
     overflow-x: scroll;
 
     &--loading {

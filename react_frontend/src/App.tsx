@@ -1,5 +1,5 @@
 import Header from './components/Header';
-import DocumentTools from './components/DocumentTools';
+// import DocumentTools from './components/DocumentTools';
 import IndexQuery from './components/IndexQuery';
 import './style.scss';
 

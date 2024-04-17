@@ -1,5 +1,10 @@
-Flask==2.2.3
-Flask-Cors==3.0.10
-langchain==0.0.154
-llama-index==0.6.13
-pypdf==3.9.0
+Flask==3.0.3
+flask_cors==4.0.0
+googlemaps==4.10.0
+llama_index==0.10.28
+nest_asyncio==1.5.8
+nltk==3.8.1
+openai==1.17.0
+Requests==2.31.0
+Werkzeug==3.0.2
+yelpapi==2.5.1

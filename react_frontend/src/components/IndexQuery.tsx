@@ -20,21 +20,21 @@ const IndexQuery = () => {
   return (
     <div className='query'>
       <div className='query__input'>
-        <label htmlFor='query-text'>Ask a question!</label>
+        <label htmlFor='query-text'>Ask me what to eat!</label>
         <input
           type='text'
           name='query-text'
-          placeholder='Enter a question here'
+          placeholder="I'm hungry!"
           onKeyDown={handleQuery}
         ></input>
       </div>
 
-      <CircleLoader
+      {/* <CircleLoader
         className={classNames('query__loader', {
           'query__loader--loading': isLoading,
         })}
         color='#00f596'
-      />
+      /> */}
 
       <div
         className={classNames('query__results', {
@@ -42,7 +42,7 @@ const IndexQuery = () => {
         })}
       >
         <div className='query__sources__item'>
-          <p className='query__sources__item__id'>Query Response</p>
+          <p className='query__sources__item__id'>Response</p>
         </div>
         {responseText}
       </div>

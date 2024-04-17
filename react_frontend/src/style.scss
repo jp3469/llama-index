@@ -6,8 +6,8 @@ $theme-colors: (
   secondary-hover: #83aa49,
   text-main: #000000,
   text-contrast: #ffffff,
-  header-big-block: #f35f2b,
-  header-narrow-block: #00f596,
+  header-big-block: #F9B872,
+  header-narrow-block: #B6E1E7,
 );
 
 @function theme-color($key) {
@@ -20,7 +20,7 @@ $theme-colors: (
   text-align: center;
   height: 100vh;
   width: 100%;
-  background-image: url('../public/Bakground.jpg');
+  // background-image: url('../public/Bakground.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

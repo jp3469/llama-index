@@ -28,13 +28,11 @@ from llama_index.agent.openai import OpenAIAgent
 from llama_index.llms.openai import OpenAI
 from yelpapi import YelpAPI
 
+import googlemaps
 
-index = None
-stored_docs = {}
-lock = Lock()
-
-index_name = "./saved_index"
-pkl_name = "stored_documents.pkl"
+load_dotenv()
+GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
+yelp_api_key = os.environ.get("YELP_API_KEY")
 
 # Define our tools
 # #1 tool, get top 10 restaurants in a location based on a query
@@ -71,10 +69,7 @@ def distance_to_restaurant(
 def initialize_agent():
     """Create a new global index, or load one from the pre-set path."""
     global agent
-    load_dotenv()
     # NOTE: for local testing only, do NOT deploy with your key hardcoded
-    GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
-    yelp_api_key = os.environ.get("YELP_API_KEY")
     os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
     restaurant_search_tool = FunctionTool.from_defaults(fn=restaurant_search)
     restaurant_details_tool = FunctionTool.from_defaults(fn=restaurant_details_search)
