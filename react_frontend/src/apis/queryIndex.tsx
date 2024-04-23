@@ -18,7 +18,7 @@ Got it! Could you provide more details on what you'd like to test within the app
 */
 
 const queryIndex = async (query: string): Promise<QueryResponse> => {
-  const queryURL = new URL('http://localhost:5601/query?');
+  const queryURL = new URL('https://llama-index-1nqj.onrender.com/query?');
   queryURL.searchParams.append('text', query);
 
   const response = await fetch(queryURL, { mode: 'cors' });
