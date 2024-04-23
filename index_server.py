@@ -108,9 +108,9 @@ if __name__ == "__main__":
 
     # setup server
     # NOTE: you might want to handle the password in a less hardcoded way
-    manager = BaseManager(('', 5602), b'password')
-    manager.register('query_agent', query_agent)
-    server = manager.get_server()
+    # manager = BaseManager(('', 5602), b'password')
+    # manager.register('query_agent', query_agent)
+    # server = manager.get_server()
 
     print("server started...")
-    server.serve_forever()
+    # server.serve_forever()
