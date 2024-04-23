@@ -31,8 +31,10 @@ from yelpapi import YelpAPI
 import googlemaps
 
 load_dotenv()
+# NOTE: for local testing only, do NOT deploy with your key hardcoded
 GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
 yelp_api_key = os.environ.get("YELP_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
 
 # Define our tools
 # #1 tool, get top 10 restaurants in a location based on a query
@@ -69,8 +71,6 @@ def distance_to_restaurant(
 def initialize_agent():
     """Create a new global index, or load one from the pre-set path."""
     global agent
-    # NOTE: for local testing only, do NOT deploy with your key hardcoded
-    os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
     restaurant_search_tool = FunctionTool.from_defaults(fn=restaurant_search)
     restaurant_details_tool = FunctionTool.from_defaults(fn=restaurant_details_search)
     distance_to_restaurant_tool = FunctionTool.from_defaults(fn=distance_to_restaurant)
