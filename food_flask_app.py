@@ -39,9 +39,9 @@ CORS(app)
 
 load_dotenv()
 # NOTE: for local testing only, do NOT deploy with your key hardcoded
-GOOGLE_MAPS_API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
-yelp_api_key = os.environ.get("YELP_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.environ.get("OPENAI_API_KEY")
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+yelp_api_key = os.getenv("YELP_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Define our tools
 # #1 tool, get top 10 restaurants in a location based on a query
