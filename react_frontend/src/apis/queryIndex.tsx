@@ -17,8 +17,11 @@ Got it! Could you provide more details on what you'd like to test within the app
 -> {text: 'Got it! Could you provide more details on what you'd like to test within the app?'}
 */
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const queryIndex = async (query: string): Promise<QueryResponse> => {
-  const queryURL = new URL('http://localhost:5601/query?');
+  const url = isDevelopment ? 'http://localhost:5000/query?' : 'https://llama-index-1nqj.onrender.com/query?';
+  const queryURL = new URL(url);
   queryURL.searchParams.append('text', query);
 
   const response = await fetch(queryURL, { mode: 'cors' });
